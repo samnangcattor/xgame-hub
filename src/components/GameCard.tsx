@@ -1,4 +1,4 @@
-import { GAME_CARD_WIDTH, Game } from '../models/game';
+import { GAME_CARD_MAX_WIDTH, Game } from '../models/game';
 import { Card, CardBody, HStack, Heading, Image, Text } from '@chakra-ui/react';
 import PlatformIconList from './PlatformIconList';
 import CriticScore from './CriticScore';
@@ -12,7 +12,7 @@ const GameCard = ({ game }: Props) => {
   const platforms = game.parent_platforms.map(({ platform }) => platform);
 
   return (
-    <Card width={GAME_CARD_WIDTH} borderRadius={10} overflow="hidden">
+    <Card maxWidth={GAME_CARD_MAX_WIDTH} borderRadius={10} overflow="hidden">
       <Image src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
