@@ -23,8 +23,3 @@ export interface Game {
   parent_platforms: Array<{ platform: Platform }>;
   metacritic: number;
 }
-
-export interface FetchGamesResponse {
-  count: number;
-  results: Array<Game>;
-}
