@@ -1,7 +1,6 @@
-export const GAME_CARD_MAX_WIDTH = '400px';
-export enum GAME_CARD_SKELETON_WIDTH {
+export enum GAME_CARD_WIDTH {
   MIN = '200px',
-  MAX = GAME_CARD_MAX_WIDTH,
+  MAX = '400px',
 }
 
 export const GAME_GRID_COLUMNS = {
