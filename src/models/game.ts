@@ -1,8 +1,3 @@
-export enum GAME_CARD_WIDTH {
-  MIN = '200px',
-  MAX = '400px',
-}
-
 export const GAME_GRID_COLUMNS = {
   sm: 2,
   md: 3,
