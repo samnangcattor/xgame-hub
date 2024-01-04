@@ -15,7 +15,7 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
 
   return (
     <Menu>
-      <MenuButton marginLeft={2} as={Button} rightIcon={<BsChevronDown />}>
+      <MenuButton as={Button} rightIcon={<BsChevronDown />}>
         {selectedPlatform ? selectedPlatform.name : 'Platform'}
       </MenuButton>
       <MenuList overflowY="scroll" height="300px">
