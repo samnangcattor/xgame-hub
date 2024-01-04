@@ -1,3 +1,5 @@
+import { Genre } from './genre';
+
 export const GAME_GRID_COLUMNS = {
   sm: 2,
   md: 3,
@@ -17,4 +19,9 @@ export interface Game {
   background_image: string;
   parent_platforms: Array<{ platform: Platform }>;
   metacritic: number;
+}
+
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
 }
