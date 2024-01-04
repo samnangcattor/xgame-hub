@@ -3,8 +3,13 @@ import useGenres from '../hooks/useGenres';
 import GenreListItemSkeleton from './GenreListItemSkeleton';
 import GenreListItem from './GenreListItem';
 import GenreContainer from './GenreContainer';
+import { Genre } from '../models/genre';
 
-const GenreList = () => {
+interface Props {
+  onSelectedGenre: (genre: Genre) => void;
+}
+
+const GenreList = ({ onSelectedGenre }: Props) => {
   const { data: genres, isLoading, error } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -21,7 +26,7 @@ const GenreList = () => {
       {!isLoading &&
         genres.map((genre) => (
           <GenreContainer key={genre.id}>
-            <GenreListItem genre={genre} />
+            <GenreListItem genre={genre} onSelectedGenre={onSelectedGenre} />
           </GenreContainer>
         ))}
     </List>
