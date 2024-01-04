@@ -1,13 +1,14 @@
 import getCroppedImageUrl from '../services/image-url';
-import { Button, HStack, Image, Text } from '@chakra-ui/react';
+import { Button, HStack, Image, Text, Tooltip } from '@chakra-ui/react';
 import { Genre } from '../models/genre';
 
 interface Props {
   genre: Genre;
   onSelectedGenre: (genre: Genre) => void;
+  isSelected: boolean;
 }
 
-const GenreListItem = ({ genre, onSelectedGenre }: Props) => {
+const GenreListItem = ({ isSelected, genre, onSelectedGenre }: Props) => {
   return (
     <HStack>
       <Image
@@ -17,10 +18,15 @@ const GenreListItem = ({ genre, onSelectedGenre }: Props) => {
       />
       <Button
         onClick={() => onSelectedGenre(genre)}
-        fontSize={'lg'}
+        fontSize={'md'}
         variant="link"
+        colorScheme={isSelected ? 'blue' : 'white'}
       >
-        {genre.name}
+        <Tooltip label={genre.name}>
+          <Text textOverflow="ellipsis" overflow="hidden">
+            {genre.name}
+          </Text>
+        </Tooltip>
       </Button>
     </HStack>
   );

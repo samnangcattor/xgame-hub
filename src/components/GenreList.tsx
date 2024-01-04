@@ -7,9 +7,10 @@ import { Genre } from '../models/genre';
 
 interface Props {
   onSelectedGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectedGenre }: Props) => {
+const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
   const { data: genres, isLoading, error } = useGenres();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -26,7 +27,11 @@ const GenreList = ({ onSelectedGenre }: Props) => {
       {!isLoading &&
         genres.map((genre) => (
           <GenreContainer key={genre.id}>
-            <GenreListItem genre={genre} onSelectedGenre={onSelectedGenre} />
+            <GenreListItem
+              isSelected={genre.id === selectedGenre?.id}
+              genre={genre}
+              onSelectedGenre={onSelectedGenre}
+            />
           </GenreContainer>
         ))}
     </List>
