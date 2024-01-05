@@ -1,6 +1,5 @@
-import { Genre } from '../models/genre';
-import useData from './useData';
+import genres from '../data/genre';
 
-const useGenres = () => useData<Genre>('/genres');
+const useGenres = () => ({ data: genres, isLoading: false, error: null });
 
 export default useGenres;
