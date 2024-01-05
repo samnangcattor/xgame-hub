@@ -13,6 +13,8 @@ interface Props {
   selectedSortOrder: { value: string; label: string } | null;
 }
 
+const SELECTED_BACKGOUND_COLOR = '#ffffff14';
+
 const SortSelector = ({ selectedSortOrder, onSelectSortOrder }: Props) => {
   const sortOrders = [
     { value: '', label: 'Relevacne' },
@@ -33,7 +35,9 @@ const SortSelector = ({ selectedSortOrder, onSelectSortOrder }: Props) => {
           <MenuItem
             onClick={() => onSelectSortOrder({ value, label })}
             key={value}
-            bgColor={selectedSortOrder?.value === value ? 'grey' : ''}
+            bgColor={
+              selectedSortOrder?.value === value ? SELECTED_BACKGOUND_COLOR : ''
+            }
           >
             {label}
           </MenuItem>
