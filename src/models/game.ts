@@ -19,6 +19,8 @@ export interface Game {
   background_image: string;
   parent_platforms: Array<{ platform: Platform }>;
   metacritic: number;
+  rating_top: number;
+  rating: number;
 }
 
 export interface GameQuery {
