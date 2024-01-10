@@ -10,7 +10,7 @@ interface Props {
 }
 
 const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
-  const { data: genres } = useGenres();
+  const { data } = useGenres();
 
   return (
     <>
@@ -18,7 +18,7 @@ const GenreList = ({ selectedGenre, onSelectedGenre }: Props) => {
         Genres
       </Heading>
       <List>
-        {genres.map((genre) => (
+        {data?.results.map((genre) => (
           <GenreContainer key={genre.id}>
             <GenreListItem
               isSelected={genre.id === selectedGenre?.id}
