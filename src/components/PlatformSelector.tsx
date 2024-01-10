@@ -9,7 +9,7 @@ interface Props {
 }
 
 const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
-  const { data: plateforms } = usePlatforms();
+  const { data } = usePlatforms();
 
   return (
     <Menu>
@@ -17,7 +17,7 @@ const PlatformSelector = ({ selectedPlatform, onSelectedPlatform }: Props) => {
         {selectedPlatform ? selectedPlatform.name : 'Platform'}
       </MenuButton>
       <MenuList overflowY="scroll" height="300px">
-        {plateforms.map((platform) => (
+        {data?.results.map((platform) => (
           <MenuItem
             key={platform.id}
             onClick={() => onSelectedPlatform(platform)}
