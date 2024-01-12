@@ -7,13 +7,9 @@ import PlatformSelector from './components/PlatformSelector';
 import { GameQuery } from './models/game';
 import SortSelector from './components/SortSelector';
 import GameHeading from './components/GameHeading';
-import useGenres from './hooks/useGenres';
-import usePlatforms from './hooks/usePlatforms';
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  const { data: genres } = useGenres();
-  const { data: platforms } = usePlatforms();
 
   return (
     <Grid
@@ -35,7 +31,6 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" padding={5}>
           <GenreList
-            genres={genres?.results}
             selectedGenreId={gameQuery.genreId}
             onSelectedGenre={(genre) =>
               setGameQuery({ ...gameQuery, genreId: genre.id })
@@ -46,14 +41,9 @@ function App() {
 
       <GridItem area="main">
         <Box paddingLeft={2}>
-          <GameHeading
-            gameQuery={gameQuery}
-            platforms={platforms?.results}
-            genres={genres?.results}
-          />
+          <GameHeading gameQuery={gameQuery} />
           <Flex gap={3} marginBottom={5}>
             <PlatformSelector
-              platforms={platforms?.results}
               selectedPlatformId={gameQuery.platformId}
               onSelectedPlatform={(platform) =>
                 setGameQuery({ ...gameQuery, platformId: platform.id })
