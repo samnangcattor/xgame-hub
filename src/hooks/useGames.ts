@@ -2,6 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { Game, GameQuery } from '../models/game';
 import { FetchResponse } from '../models/data';
 import HttpClient from '../services/http-client';
+import ms from 'ms';
 
 const httpClient = new HttpClient<Game>('/games');
 
@@ -24,6 +25,7 @@ const useGames = (gameQuery: GameQuery | null) => {
       return lastPage.next ? allPage.length + 1 : undefined;
     },
     initialPageParam: 1,
+    staleTime: ms('24h'),
   });
 };
 
