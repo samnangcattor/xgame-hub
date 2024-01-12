@@ -6,14 +6,10 @@ import HttpClient from '../services/http-client';
 const httpClient = new HttpClient<Game>('/games');
 
 const useGames = (gameQuery: GameQuery | null) => {
-  // return useQuery<FetchResponse<Game>, Error>({
-  //   queryKey: ['games', params],
-  //   queryFn: () => httpClient.getAll({ params }),
-  // });
   const fetchGames = ({ pageParam }: { pageParam: unknown }) =>
     httpClient.getAll({
       params: {
-        genres: gameQuery?.genre?.id,
+        genres: gameQuery?.genreId,
         parent_platforms: gameQuery?.platform?.id,
         ordering: gameQuery?.sortOrder?.value,
         search: gameQuery?.searchText,
